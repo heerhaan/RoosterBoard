@@ -1,0 +1,41 @@
+﻿@page "/calendar"
+@using MudBlazor.Extensions
+
+<MudCalendar Items="_calendarItems" MonthCellMinHeight="100">
+    <CellTemplate>
+        <div style="width: 100%; height: 100%; border: 2px solid @GetColor(((CustomCalendarItem)context).Color)">
+            <div style="background-color: @GetColor(((CustomCalendarItem)context).Color)"><MudText Style="color: #ffffff;" Typo="Typo.body1" Align="Align.Center">@(((CustomCalendarItem)context).Title)</MudText></div>
+            <div class="pa-2"><MudText Typo="Typo.body2">@context.Text</MudText></div>
+        </div>
+    </CellTemplate>
+</MudCalendar>
+
+@code {
+    private string GetColor(Color color) => $"var(--mud-palette-{color.ToDescriptionString()})";
+    
+    private List<CustomCalendarItem> _calendarItems = new()
+    {
+        new CustomCalendarItem
+        {
+            Start = DateTime.Today.AddHours(10),
+            End = DateTime.Today.AddHours(12),
+            Title = "Big ass meeting",
+            Text = "Meeting has a big ass",
+            Color = Color.Primary
+        },
+        new CustomCalendarItem
+        {
+            Start = DateTime.Today.AddDays(1).AddHours(10),
+            End = DateTime.Today.AddDays(2).AddHours(12),
+            Title = "Two day moment",
+            Text = "Two! days!",
+            Color = Color.Primary
+        },
+    };
+
+    private class CustomCalendarItem : CalendarItem
+    {
+        public string? Title { get; set; }
+        public Color Color { get; set; }
+    }
+}
