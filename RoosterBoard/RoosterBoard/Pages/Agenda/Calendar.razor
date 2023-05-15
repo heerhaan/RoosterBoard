@@ -1,14 +1,19 @@
 ﻿@page "/calendar"
+@using Heron.MudCalendar
 @using MudBlazor.Extensions
 
-<MudCalendar Items="_calendarItems" MonthCellMinHeight="100">
-    <CellTemplate>
-        <div style="width: 100%; height: 100%; border: 2px solid @GetColor(((CustomCalendarItem)context).Color)">
-            <div style="background-color: @GetColor(((CustomCalendarItem)context).Color)"><MudText Style="color: #ffffff;" Typo="Typo.body1" Align="Align.Center">@(((CustomCalendarItem)context).Title)</MudText></div>
-            <div class="pa-2"><MudText Typo="Typo.body2">@context.Text</MudText></div>
-        </div>
-    </CellTemplate>
-</MudCalendar>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge">
+    <MudCalendar Items="@_calendarItems" MonthCellMinHeight="100">
+        <CellTemplate>
+            <div style="width: 100%; height: 100%; border: 2px solid @GetColor(((CustomCalendarItem)context).Color)">
+                <div style="background-color: @GetColor(((CustomCalendarItem)context).Color)"><MudText Style="color: #ffffff;" Typo="Typo.body1" Align="Align.Center">@(((CustomCalendarItem)context).Title)</MudText></div>
+                    <div class="pa-2">
+                        <MudText Typo="Typo.body2">@context.Text</MudText>
+                    </div>
+                </div>
+            </CellTemplate>
+        </MudCalendar>
+</MudContainer>
 
 @code {
     private string GetColor(Color color) => $"var(--mud-palette-{color.ToDescriptionString()})";
@@ -20,7 +25,7 @@
             Start = DateTime.Today.AddHours(10),
             End = DateTime.Today.AddHours(12),
             Title = "Big ass meeting",
-            Text = "Meeting has a big ass",
+            Text = "Meeting has a big assignment",
             Color = Color.Primary
         },
         new CustomCalendarItem
