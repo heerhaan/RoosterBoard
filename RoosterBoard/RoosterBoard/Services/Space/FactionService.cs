@@ -1,6 +1,6 @@
 ﻿namespace RoosterBoard.Services.Space
 {
-    public class AccountService
+    public class FactionService
     {
     }
 }

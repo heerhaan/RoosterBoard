@@ -29,5 +29,15 @@ namespace RoosterBoard.Data
         {
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(BearerHttpHeader, spacerToken);
         }
+
+        public async Task<TItem> Get<TItem>(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<TItem> Post<TItem>(string path, object parameters)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
