@@ -7,9 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeBeam.MudBlazor.Extensions" Version="6.4.12" />
-    <PackageReference Include="Heron.MudCalendar" Version="1.0.7" />
-    <PackageReference Include="MudBlazor" Version="6.2.3" />
+    <PackageReference Include="CodeBeam.MudBlazor.Extensions" Version="6.6.0" />
+    <PackageReference Include="Heron.MudCalendar" Version="1.0.10" />
+    <PackageReference Include="MudBlazor" Version="6.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Dashboard\Shared\" />
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
 </Project>
