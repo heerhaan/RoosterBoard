@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
     <link href="./css/site.css" rel="stylesheet" />
+
+    <!-- readspeaker -->
+    @* <script type="text/javascript">window.rsConf = { general: { usePost: true, skipHiddenContent: true } };</script> *@
+    <script src="https://cdn-eu.readspeaker.com/script/35/webReader/webReader.js?pids=wr" type="text/javascript" id="rs_req_Init"></script>
+
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body>
@@ -30,3 +35,36 @@
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
 </body>
 </html>
+
+<script>
+    function initReadSpeaker(elementId) {
+        var nonusedTargetElement = document.getElementById(elementId);
+        var testElementId = "inflexible-readspeaker-element";
+
+        var queryString = "#" + testElementId + " .readspeaker-parameter-element";
+        var parameterElement = document.querySelector(queryString);
+        if (!parameterElement) {
+            console.warn("wajo, element niet gevonden op " + queryString);
+        }
+        else {
+            var readspeakerURL = new URL(parameterElement.href);
+
+            //Set readspeaker parameters
+            var language = { language: "nl_nl", voice: "Ilse" };
+            readspeakerURL.searchParams.append("lang", language.language);
+            readspeakerURL.searchParams.append("voice", language.voice);
+
+            var urlMoment = readspeakerURL.href;
+        }
+
+        console.log("Possibly the upcoming URL: " + urlMoment);
+
+        //Re-trigger only event binding (init() and loadCore() have been completed already)
+        if (!!rspkr && !!rspkr.ui) { 
+            rspkr.ui.addClickEvents();
+        }
+        else { 
+            console.warn("Readspeaker-elements not present, clickevents not (re)bound");
+        }
+    }
+</script>

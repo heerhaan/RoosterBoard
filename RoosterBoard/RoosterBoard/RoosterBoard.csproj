@@ -7,19 +7,34 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CodeBeam.MudBlazor.Extensions" Version="6.6.0" />
-    <PackageReference Include="Heron.MudCalendar" Version="1.0.10" />
-    <PackageReference Include="MudBlazor" Version="6.10.0" />
+    <Content Remove="Pages\SpeakerTest.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CodeBeam.MudBlazor.Extensions" Version="6.6.1" />
+    <PackageReference Include="Heron.MudCalendar" Version="1.0.11" />
+    <PackageReference Include="MudBlazor" Version="6.11.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Features\Dashboard\Shared\" />
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\SpeakerTest.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\SpeakerTest.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Notes\SpeakerTest.razor" />
   </ItemGroup>
 
 </Project>
