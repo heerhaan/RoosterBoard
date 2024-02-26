@@ -1,0 +1,26 @@
+﻿<h3>Test</h3>
+
+<p>@_text</p>
+
+<MudButton OnClick="ClickEvent">
+    Click
+</MudButton>
+
+@code {
+    private string _text = "base";
+
+    [Parameter]
+    public EventCallback<string> OnClick { get; set; }
+
+    public void SetCallbackEvent(Action<string> action)
+    {
+        _text = "wajo sick";
+
+        OnClick = EventCallback.Factory.Create<string>(this, action);
+    }
+
+    public async Task ClickEvent()
+    {
+        await OnClick.InvokeAsync(_text);
+    }
+}

@@ -9,6 +9,12 @@
                 <MudText Typo="Typo.h3" GutterBottom="true">
                     Propah idea for data storage: sqlite
                 </MudText>
+
+                <MudButton OnClick="DoTheSet">Set</MudButton>
+
+                <RoosterBoard.Pages.Tools.Test @ref="TestComp" />
+
+                <p>en dan: @clickedText</p>
             </MudPaper>
         </MudItem>
         <MudItem xs="3">
@@ -29,3 +35,28 @@
         </MudItem>
     </MudGrid>
 </MudContainer>
+
+@code {
+    private string clickedText = "nee";
+
+    private RoosterBoard.Pages.Tools.Test? TestComp { get; set; }
+
+    protected override void OnInitialized()
+    {
+        
+    }
+
+    private void DoTheSet()
+    {
+        if (TestComp != null)
+        {
+            TestComp.SetCallbackEvent(Happening);
+            InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private void Happening(string text)
+    {
+        clickedText = text;
+    }
+}

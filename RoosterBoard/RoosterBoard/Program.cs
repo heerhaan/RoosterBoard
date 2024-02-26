@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using MudBlazor.Services;
-using RoosterBoard.Data;
-using RoosterBoard.Services.Space;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +12,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices();
 
-builder.Services.AddHttpClient<SpaceClient>();
-
 // Add own services
-builder.Services.AddScoped<AgentService>();
 
 var app = builder.Build();
 
